@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "sutetchi",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Sutetchi",
+  "description": "The mod about all about Slimelins!",
   "authors": [
-    "Me!"
+    "MonsutaaFang"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/MonsutaaFang/Sutetchi",
+    "sources": "https://github.com/MonsutaaFang/Sutetchi"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "???",
+  "icon": "",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.monsutaafang.sutetchi.Sutetchi"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "sutetchi.mixins.json"
   ],
 
   "depends": {
