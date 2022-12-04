@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "net.monsutaafang.sutetchi.Sutetchi"
+    ],
+    "client": [
+      "net.monsutaafang.sutetchi.SutetchiClient"
     ]
   },
   "mixins": [
