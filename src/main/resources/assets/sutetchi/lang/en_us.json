@@ -1,3 +1,7 @@
 {
-  "item.sutetchi.slimelin_spawn_egg": "Slimelin Spawn Egg"
+  "item.sutetchi.slimelin_spawn_egg": "Slimelin Spawn Egg",
+
+  "itemGroup.sutetchi.sutetchi": "Sutetchi",
+
+  "entity.sutetchi.slimelin": "Slimelin"
 }
