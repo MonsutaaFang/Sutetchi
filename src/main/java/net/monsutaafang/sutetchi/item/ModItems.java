@@ -12,6 +12,9 @@ import static software.bernie.example.registry.RegistryUtils.registerItem;
 
 public class ModItems {
 
+        public static final Item TAME_CRYSTAL = registerItem("tame_crystal",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
+
         public static final Item SLIMELIN_SPAWN_EGG = registerItem("slimelin_spawn_egg",
                 new SpawnEggItem(ModEntities.SLIMELIN, 0x48fA56, 0x1ad447,
                         new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).maxCount(1)));

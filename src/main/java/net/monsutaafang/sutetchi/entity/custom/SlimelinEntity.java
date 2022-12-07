@@ -19,6 +19,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+import net.monsutaafang.sutetchi.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -93,7 +94,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         ItemStack itemstack = player.getStackInHand(hand);
         Item item = itemstack.getItem();
 
-        Item itemForTaming = Items.SLIME_BALL;
+        Item itemForTaming = ModItems.TAME_CRYSTAL;
 
         if (item == itemForTaming && !isTamed()) {
             if (this.world.isClient()) {
