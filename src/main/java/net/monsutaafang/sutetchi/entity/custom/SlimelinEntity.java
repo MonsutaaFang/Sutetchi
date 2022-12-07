@@ -12,7 +12,6 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
@@ -89,6 +88,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
     private static final TrackedData<Boolean> SITTING =
             DataTracker.registerData(SlimelinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemstack = player.getStackInHand(hand);
@@ -108,7 +108,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
                     super.setOwner(player);
                     this.navigation.recalculatePath();
                     this.setTarget(null);
-                    this.world.sendEntityStatus(this, (byte)7);
+                    this.world.sendEntityStatus(this, (byte) 7);
                     setSit(true);
                 }
 
@@ -116,7 +116,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
             }
         }
 
-        if(isTamed() && !this.world.isClient() && hand == Hand.MAIN_HAND && isOwner(player)) {
+        if (isTamed() && !this.world.isClient() && hand == Hand.MAIN_HAND && isOwner(player)) {
             setSit(!isSitting());
             return ActionResult.SUCCESS;
         }
@@ -143,11 +143,11 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         if (tamed) {
             getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(60.0D);
             getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(4D);
-            getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double)0.37f);
+            getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.37f);
         } else {
             getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(30.0D);
             getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(2D);
-            getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double)0.37f);
+            getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.37f);
         }
     }
 

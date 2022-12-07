@@ -12,7 +12,7 @@ public class SlimelinRenderer extends GeoEntityRenderer<SlimelinEntity> {
     }
 
     @Override
-    public Identifier getTextureLocation(SlimelinEntity instance) {
+    public Identifier getTextureResource(SlimelinEntity instance) {
         return new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/slimelin.png");
     }
 }

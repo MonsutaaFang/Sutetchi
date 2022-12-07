@@ -11,17 +11,17 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 public class SlimelinModel extends AnimatedGeoModel<SlimelinEntity> {
     @Override
-    public Identifier getAnimationFileLocation(SlimelinEntity entity) {
+    public Identifier getAnimationResource(SlimelinEntity entity) {
         return new Identifier(Sutetchi.MOD_ID, "animations/slimelin.animation.json");
     }
 
     @Override
-    public Identifier getModelLocation(SlimelinEntity entity) {
+    public Identifier getModelResource(SlimelinEntity entity) {
         return new Identifier(Sutetchi.MOD_ID, "geo/slimelin.geo.json");
     }
 
     @Override
-    public Identifier getTextureLocation(SlimelinEntity entity) {
+    public Identifier getTextureResource(SlimelinEntity entity) {
         return new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/slimelin.png");
 
     }
