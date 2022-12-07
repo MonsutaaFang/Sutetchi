@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": {
+      "item": "minecraft:diamond"
+    },
+    "G": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "T": {
+      "item": "minecraft:poppy"
+    }
+  },
+  "pattern": [
+    "GEG",
+    "ETE",
+    "GEG"
+  ],
+  "result": {
+    "item": "sutetchi:tame_crystal"
+  }
+}

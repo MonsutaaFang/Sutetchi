@@ -8,8 +8,6 @@ import net.monsutaafang.sutetchi.Sutetchi;
 import net.monsutaafang.sutetchi.entity.ModEntities;
 import net.minecraft.util.registry.Registry;
 
-import static software.bernie.example.registry.RegistryUtils.registerItem;
-
 public class ModItems {
 
         public static final Item TAME_CRYSTAL = registerItem("tame_crystal",
