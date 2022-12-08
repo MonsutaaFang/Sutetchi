@@ -1,5 +1,6 @@
 package net.monsutaafang.sutetchi.entity.custom;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -17,6 +18,7 @@ import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.monsutaafang.sutetchi.item.ModItems;
 import org.jetbrains.annotations.Nullable;
@@ -34,6 +36,10 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
     public SlimelinEntity(EntityType<? extends TameableEntity> entityType, World world) {
         super(entityType, world);
     }
+
+    private boolean songPlaying;
+    @Nullable
+    private BlockPos songSource;
 
     @Nullable
     @Override
@@ -71,7 +77,13 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
+        if (this.isSongPlaying() && this.songSource.isWithinDistance(this.getPos(), 3.46) && this.world.getBlockState(this.songSource).isOf(Blocks.JUKEBOX)) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("dance", true));
+            return PlayState.CONTINUE;
+        }
+
+
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
         return PlayState.CONTINUE;
     }
 
@@ -85,6 +97,16 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
     public AnimationFactory getFactory() {
         return factory;
     }
+
+    public void setNearbySongPlaying(BlockPos songPosition, boolean playing) {
+        this.songSource = songPosition;
+        this.songPlaying = playing;
+    }
+
+    public boolean isSongPlaying() {
+        return this.songPlaying;
+    }
+
 
     private static final TrackedData<Boolean> SITTING =
             DataTracker.registerData(SlimelinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
