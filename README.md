@@ -9,8 +9,6 @@ Sutetchi is a very early wip Minecraft mod that revoles around Slimelins, a new 
 
 **Future plans:**
 
-* Add a Slime Incubator that allows you to spawn/aquire your slimelin in survival.
-
 * Add Outfit/Texture swaps for your Slimelin aquired via dungeon loot.
 
 * Add Items found in dungeons that can increase your Slimelins base health, damage, ect
@@ -19,10 +17,14 @@ Sutetchi is a very early wip Minecraft mod that revoles around Slimelins, a new 
 
 **Currently Available:**
 
-* Spawn Slimelins in via creative mode, you can tame them via a slime ball. They have basic follow functionality and sit functionality.
+* Tame Slimelins via a Tame Crystal. Slimelins spawn in the Swamp Biome. You can craft a Tame Crystal with a poppy flower, 4 diamonds and 4 lapis lazuli.
+
+* Slimelins have basic AI, they will follow you once tamed, and can sit via right clicked on once tamed.
 
 Full disclosure, this mod was made as a side project to help me learn Java and just for fun, as such, the mod's repo acts as a way to share the code with friends. If you stumble upon this mod feel free to download and try it yourself, but I would personally not reccomend using it in a mod pack or anything as there's
 bound to be bugs. You are, of course, free to do so, but I would advise against it.
+
+**Requires Minecraft Fabric 1.19.2 and GeckoLib 1.19.2**
 
 Sutetchi's code (aside from models/textures) is public domain under Creative Commons 0
 
