@@ -14,7 +14,7 @@
   },
 
   "license": "???",
-  "icon": "",
+  "icon": "assets/sutetchi/icon.png",
 
   "environment": "*",
   "entrypoints": {
@@ -28,7 +28,6 @@
   "mixins": [
     "sutetchi.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.14.11",
     "fabric": "*",

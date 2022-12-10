@@ -1,9 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "E": {
-      "item": "minecraft:diamond"
-    },
     "G": {
       "item": "minecraft:lapis_lazuli"
     },
@@ -12,9 +9,9 @@
     }
   },
   "pattern": [
-    "GEG",
-    "ETE",
-    "GEG"
+    " G ",
+    "GTG",
+    " G "
   ],
   "result": {
     "item": "sutetchi:tame_crystal"

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "minecraft:slime_ball"
+    },
+    "T": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "pattern": [
+    "   ",
+    " GT",
+    "   "
+  ],
+  "result": {
+    "item": "sutetchi:raw_slime"
+  }
+}

@@ -13,6 +13,7 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
@@ -20,6 +21,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.monsutaafang.sutetchi.entity.Variant.SlimelinVariant;
 import net.monsutaafang.sutetchi.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -72,13 +74,13 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
             return PlayState.CONTINUE;
         }
 
-        if (this.isSitting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("sit", true));
+        if (this.isSongPlaying() && this.songSource.isWithinDistance(this.getPos(), 6.46) && this.world.getBlockState(this.songSource).isOf(Blocks.JUKEBOX)) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("dance", true));
             return PlayState.CONTINUE;
         }
 
-        if (this.isSongPlaying() && this.songSource.isWithinDistance(this.getPos(), 3.46) && this.world.getBlockState(this.songSource).isOf(Blocks.JUKEBOX)) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("dance", true));
+        if (this.isSitting()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("sit", true));
             return PlayState.CONTINUE;
         }
 
@@ -117,6 +119,8 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         Item item = itemstack.getItem();
 
         Item itemForTaming = ModItems.TAME_CRYSTAL;
+        Item itemForWitch = ModItems.WITCHES_BREW;
+        Item itemForRawslime = ModItems.RAW_SLIME;
 
         if (item == itemForTaming && !isTamed()) {
             if (this.world.isClient()) {
@@ -136,6 +140,18 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
                 return ActionResult.SUCCESS;
             }
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForWitch && isOwner(player)) {
+            this.setVariant(SlimelinVariant.WITCH);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForRawslime && isOwner(player)) {
+            this.setVariant(SlimelinVariant.DEFAULT);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && hand == Hand.MAIN_HAND && isOwner(player)) {
@@ -177,12 +193,14 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("isSitting", this.dataTracker.get(SITTING));
+        nbt.putInt("variant", this.dataTracker.get(DATA_ID_TYPE_VARIANT));
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         this.dataTracker.set(SITTING, nbt.getBoolean("isSitting"));
+        this.dataTracker.set(DATA_ID_TYPE_VARIANT, nbt.getInt("variant"));
     }
 
     @Override
@@ -198,5 +216,21 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(SITTING, false);
+        this.dataTracker.startTracking(DATA_ID_TYPE_VARIANT, 0);
+    }
+
+    private static final TrackedData<Integer> DATA_ID_TYPE_VARIANT =
+            DataTracker.registerData(SlimelinEntity.class, TrackedDataHandlerRegistry.INTEGER);
+
+    public SlimelinVariant getVariant() {
+        return SlimelinVariant.byId(this.getTypeVariant() & 255);
+    }
+
+    private int getTypeVariant() {
+        return this.dataTracker.get(DATA_ID_TYPE_VARIANT);
+    }
+
+    private void setVariant(SlimelinVariant variant) {
+        this.dataTracker.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 }

@@ -22,7 +22,7 @@ public class SlimelinModel extends AnimatedGeoModel<SlimelinEntity> {
 
     @Override
     public Identifier getTextureResource(SlimelinEntity entity) {
-        return new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/slimelin.png");
+        return SlimelinRenderer.LOCATION_BY_VARIANT.get(entity.getVariant());
 
     }
 
