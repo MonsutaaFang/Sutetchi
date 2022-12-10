@@ -9,10 +9,6 @@ Sutetchi is a very early wip Minecraft mod that revoles around Slimelins, a new 
 
 **Future plans:**
 
-* Add Outfit/Texture swaps for your Slimelin aquired via dungeon loot.
-
-* Add Items found in dungeons that can increase your Slimelins base health, damage, ect
-
 * Add Slimelin themed decor and misc items used for building/creative purposes.
 
 **Currently Available:**
