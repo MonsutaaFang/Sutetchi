@@ -31,6 +31,15 @@ public class ModItems {
         public static final Item WITCHES_BREW = registerItem("witches_brew",
                 new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
 
+        public static final Item SEA_WITCHES_BREW = registerItem("sea_witches_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
+
+        public static final Item NETHER_WITCHES_BREW = registerItem("nether_witches_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
+
+        public static final Item END_WITCHES_BREW = registerItem("end_witches_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
+
         public static final Item SLIMELIN_SPAWN_EGG = registerItem("slimelin_spawn_egg",
                 new SpawnEggItem(ModEntities.SLIMELIN, 0x48fA56, 0x1ad447,
                         new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).maxCount(1)));

@@ -24,6 +24,12 @@ public class SlimelinRenderer extends GeoEntityRenderer<SlimelinEntity> {
                         new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/endslimelin.png"));
                 map.put(SlimelinVariant.WITCH,
                         new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/slimelinwitch.png"));
+                map.put(SlimelinVariant.SEAWITCH,
+                        new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/seaslimelinwitch.png"));
+                map.put(SlimelinVariant.NETHERWITCH,
+                        new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/netherslimelinwitch.png"));
+                map.put(SlimelinVariant.ENDWITCH,
+                        new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/endslimelinwitch.png"));
             });
 
     public SlimelinRenderer(EntityRendererFactory.Context ctx) {

@@ -9,7 +9,10 @@ public enum SlimelinVariant {
     SEA(1),
     NETHER(2),
     END(3),
-    WITCH(4);
+    WITCH(4),
+    SEAWITCH(5),
+    NETHERWITCH(6),
+    ENDWITCH(7);
 
     private static final SlimelinVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(SlimelinVariant::getId)).toArray(SlimelinVariant[]::new);

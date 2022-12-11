@@ -123,6 +123,9 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         Item itemForNether = ModItems.NETHER_SLIME;
         Item itemForEnd = ModItems.END_SLIME;
         Item itemForWitch = ModItems.WITCHES_BREW;
+        Item itemForSeaWitch = ModItems.SEA_WITCHES_BREW;
+        Item itemForNetherWitch = ModItems.NETHER_WITCHES_BREW;
+        Item itemForEndWitch = ModItems.END_WITCHES_BREW;
 
         if (item == itemForTaming && !isTamed()) {
             if (this.world.isClient()) {
@@ -158,6 +161,24 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
         if (isTamed() && !this.world.isClient() && item == itemForEnd && isOwner(player)) {
             this.setVariant(SlimelinVariant.END);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForSeaWitch && isOwner(player)) {
+            this.setVariant(SlimelinVariant.SEAWITCH);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForNetherWitch && isOwner(player)) {
+            this.setVariant(SlimelinVariant.NETHERWITCH);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForEndWitch && isOwner(player)) {
+            this.setVariant(SlimelinVariant.ENDWITCH);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
