@@ -13,7 +13,6 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
@@ -119,8 +118,11 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         Item item = itemstack.getItem();
 
         Item itemForTaming = ModItems.TAME_CRYSTAL;
-        Item itemForWitch = ModItems.WITCHES_BREW;
         Item itemForRawslime = ModItems.RAW_SLIME;
+        Item itemForSea = ModItems.SEA_SLIME;
+        Item itemForNether = ModItems.NETHER_SLIME;
+        Item itemForEnd = ModItems.END_SLIME;
+        Item itemForWitch = ModItems.WITCHES_BREW;
 
         if (item == itemForTaming && !isTamed()) {
             if (this.world.isClient()) {
@@ -140,6 +142,24 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
                 return ActionResult.SUCCESS;
             }
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForSea && isOwner(player)) {
+            this.setVariant(SlimelinVariant.SEA);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForNether && isOwner(player)) {
+            this.setVariant(SlimelinVariant.NETHER);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForEnd && isOwner(player)) {
+            this.setVariant(SlimelinVariant.END);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForWitch && isOwner(player)) {

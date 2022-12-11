@@ -6,7 +6,10 @@ import java.util.Comparator;
 
 public enum SlimelinVariant {
     DEFAULT(0),
-    WITCH(1);
+    SEA(1),
+    NETHER(2),
+    END(3),
+    WITCH(4);
 
     private static final SlimelinVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(SlimelinVariant::getId)).toArray(SlimelinVariant[]::new);

@@ -16,6 +16,15 @@ public class ModItems {
         public static final Item RAW_SLIME = registerItem("raw_slime",
                 new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
 
+        public static final Item SEA_SLIME = registerItem("sea_slime",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
+
+        public static final Item NETHER_SLIME = registerItem("nether_slime",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
+
+        public static final Item END_SLIME = registerItem("end_slime",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
+
         public static final Item TANGO_MUSHROOM = registerItem("tango_mushroom",
                 new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP)));
 

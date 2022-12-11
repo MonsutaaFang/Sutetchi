@@ -16,6 +16,12 @@ public class SlimelinRenderer extends GeoEntityRenderer<SlimelinEntity> {
             Util.make(Maps.newEnumMap(SlimelinVariant.class), (map) -> {
                 map.put(SlimelinVariant.DEFAULT,
                         new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/slimelin.png"));
+                map.put(SlimelinVariant.SEA,
+                        new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/seaslimelin.png"));
+                map.put(SlimelinVariant.NETHER,
+                        new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/netherslimelin.png"));
+                map.put(SlimelinVariant.END,
+                        new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/endslimelin.png"));
                 map.put(SlimelinVariant.WITCH,
                         new Identifier(Sutetchi.MOD_ID, "textures/entity/slimelin/slimelinwitch.png"));
             });
