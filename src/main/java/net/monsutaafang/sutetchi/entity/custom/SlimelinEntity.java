@@ -57,7 +57,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
     public static DefaultAttributeContainer.Builder setAttributes() {
         return TameableEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 80.0D)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0D)
                 .add(EntityAttributes.GENERIC_ARMOR, 0.0f)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8.0f)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 1.0f)
@@ -249,11 +249,11 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
     public void setTamed(boolean tamed) {
         super.setTamed(tamed);
         if (tamed) {
-            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(80.0D);
+            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(20.0D);
             getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(6D);
             getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.47f);
         } else {
-            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(80.0D);
+            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(20.0D);
             getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(2D);
             getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.47f);
         }
