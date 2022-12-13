@@ -2,6 +2,7 @@ package net.monsutaafang.sutetchi;
 
 import net.fabricmc.api.ModInitializer;
 import net.monsutaafang.sutetchi.item.ModItems;
+import net.monsutaafang.sutetchi.sound.ModSounds;
 import net.monsutaafang.sutetchi.util.ModLootTableModifiers;
 import net.monsutaafang.sutetchi.util.ModRegistries;
 import net.monsutaafang.sutetchi.world.gen.ModWorldGen;
@@ -23,6 +24,8 @@ public class Sutetchi implements ModInitializer {
 		ModWorldGen.generateModWorldGen();
 
 		ModLootTableModifiers.modifyLootTables();
+
+		ModSounds.registerSounds();
 
 		GeckoLib.initialize();
 

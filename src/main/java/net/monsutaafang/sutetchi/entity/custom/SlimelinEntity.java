@@ -1,13 +1,18 @@
 package net.monsutaafang.sutetchi.entity.custom;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.mob.GhastEntity;
+import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,6 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.monsutaafang.sutetchi.entity.Variant.SlimelinVariant;
 import net.monsutaafang.sutetchi.item.ModItems;
+import net.monsutaafang.sutetchi.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -51,25 +57,31 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
     public static DefaultAttributeContainer.Builder setAttributes() {
         return TameableEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0D)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 80.0D)
+                .add(EntityAttributes.GENERIC_ARMOR, 0.0f)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8.0f)
-                .add(EntityAttributes.GENERIC_ATTACK_SPEED, 2.0f)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3f);
+                .add(EntityAttributes.GENERIC_ATTACK_SPEED, 1.0f)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4f);
     }
 
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new SitGoal(this));
-        this.goalSelector.add(3, new FollowOwnerGoal(this, 0.75f, 1.0F, 2.0F, false));
-        this.goalSelector.add(4, new WanderAroundPointOfInterestGoal(this, 0.75f, false));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.75f, 1));
-        this.goalSelector.add(6, new LookAroundGoal(this));
-        this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 8.0f));
+        this.goalSelector.add(2, new PounceAtTargetGoal(this, 0.2F));
+        this.goalSelector.add(3, new MeleeAttackGoal(this, 0.75f, true));
+        this.goalSelector.add(4, new FollowOwnerGoal(this, 0.75f, 2.0F, 4.0F, false));
+        this.goalSelector.add(5, new WanderAroundPointOfInterestGoal(this, 0.75f, false));
+        this.goalSelector.add(6, new WanderAroundFarGoal(this, 0.75f, 1));
+        this.goalSelector.add(7, new LookAroundGoal(this));
+        this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0f));
+        this.targetSelector.add(1, new TrackOwnerAttackerGoal(this));
+        this.targetSelector.add(2, new AttackWithOwnerGoal(this));
+        this.targetSelector.add(3, (new RevengeGoal(this, new Class[0])).setGroupRevenge(new Class[0]));
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("walknew", true));
             return PlayState.CONTINUE;
         }
 
@@ -83,7 +95,6 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
             return PlayState.CONTINUE;
         }
 
-
             event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
         return PlayState.CONTINUE;
     }
@@ -91,7 +102,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
     @Override
     public void registerControllers(AnimationData animationData) {
         animationData.addAnimationController(new AnimationController(this, "controller",
-                0, this::predicate));
+                2, this::predicate));
     }
 
     @Override
@@ -118,6 +129,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         Item item = itemstack.getItem();
 
         Item itemForTaming = ModItems.TAME_CRYSTAL;
+        Item itemForHeal = ModItems.SLIMECHOCOLATE;
         Item itemForRawslime = ModItems.RAW_SLIME;
         Item itemForSea = ModItems.SEA_SLIME;
         Item itemForNether = ModItems.NETHER_SLIME;
@@ -136,6 +148,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
                 }
 
                 if (!this.world.isClient()) {
+                    this.playSound(ModSounds.TAMESOUND, 0.80f, 1f);
                     super.setOwner(player);
                     this.navigation.recalculatePath();
                     this.setTarget(null);
@@ -149,48 +162,63 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
         if (isTamed() && !this.world.isClient() && item == itemForSea && isOwner(player)) {
             this.setVariant(SlimelinVariant.SEA);
+            this.playSound(ModSounds.SLIMECHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForNether && isOwner(player)) {
             this.setVariant(SlimelinVariant.NETHER);
+            this.playSound(ModSounds.SLIMECHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForEnd && isOwner(player)) {
             this.setVariant(SlimelinVariant.END);
+            this.playSound(ModSounds.SLIMECHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForSeaWitch && isOwner(player)) {
             this.setVariant(SlimelinVariant.SEAWITCH);
+            this.playSound(ModSounds.WITCHCHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForNetherWitch && isOwner(player)) {
             this.setVariant(SlimelinVariant.NETHERWITCH);
+            this.playSound(ModSounds.WITCHCHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForEndWitch && isOwner(player)) {
             this.setVariant(SlimelinVariant.ENDWITCH);
+            this.playSound(ModSounds.WITCHCHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForWitch && isOwner(player)) {
             this.setVariant(SlimelinVariant.WITCH);
+            this.playSound(ModSounds.WITCHCHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForRawslime && isOwner(player)) {
             this.setVariant(SlimelinVariant.DEFAULT);
+            this.playSound(ModSounds.SLIMECHANGE, 1f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForHeal && isOwner(player) && this.getHealth() < this.getMaxHealth()) {
+            this.heal(80);
+            this.playSound(ModSounds.CRUNCH, 2.50f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
@@ -216,17 +244,35 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         return this.dataTracker.get(SITTING);
     }
 
+
     @Override
     public void setTamed(boolean tamed) {
         super.setTamed(tamed);
         if (tamed) {
-            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(60.0D);
-            getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(4D);
-            getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.37f);
+            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(80.0D);
+            getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(6D);
+            getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.47f);
         } else {
-            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(30.0D);
+            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(80.0D);
             getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(2D);
-            getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.37f);
+            getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.47f);
+        }
+    }
+
+    public boolean canAttackWithOwner(LivingEntity target, LivingEntity owner) {
+        if (!(target instanceof CreeperEntity) && !(target instanceof GhastEntity)) {
+            if (target instanceof SlimelinEntity) {
+                SlimelinEntity slimelinEntity = (SlimelinEntity)target;
+                return !slimelinEntity.isTamed() || slimelinEntity.getOwner() != owner;
+            } else if (target instanceof PlayerEntity && owner instanceof PlayerEntity && !((PlayerEntity)owner).shouldDamagePlayer((PlayerEntity)target)) {
+                return false;
+            } else if (target instanceof AbstractHorseEntity && ((AbstractHorseEntity)target).isTame()) {
+                return false;
+            } else {
+                return !(target instanceof TameableEntity) || !((TameableEntity)target).isTamed();
+            }
+        } else {
+            return false;
         }
     }
 
@@ -273,5 +319,9 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
     private void setVariant(SlimelinVariant variant) {
         this.dataTracker.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(ModSounds.SLIMESTEP, 0.75f, 1.0f);
     }
 }

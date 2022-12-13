@@ -1,0 +1,32 @@
+{
+  "slimestep": {
+    "subtitle": "sutetchi.slimestep",
+    "sounds": [
+      "sutetchi:slimestep"
+    ]
+  },
+  "witchchange": {
+    "subtitle": "sutetchi.witchchange",
+    "sounds": [
+      "sutetchi:witchchange"
+    ]
+  },
+  "tamesound": {
+    "subtitle": "sutetchi.tamesound",
+    "sounds": [
+      "sutetchi:tamesound"
+    ]
+  },
+  "slimechange": {
+    "subtitle": "sutetchi.slimechange",
+    "sounds": [
+      "sutetchi:slimechange"
+    ]
+  },
+  "crunch": {
+    "subtitle": "sutetchi.crunch",
+    "sounds": [
+      "sutetchi:crunch"
+    ]
+  }
+}

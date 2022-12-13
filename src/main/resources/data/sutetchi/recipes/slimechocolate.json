@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "T": {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "pattern": [
+    "   ",
+    " GT",
+    "   "
+  ],
+  "result": {
+    "item": "sutetchi:slimechocolate"
+  }
+}

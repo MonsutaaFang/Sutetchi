@@ -1,5 +1,6 @@
 {
   "item.sutetchi.tame_crystal": "Tame Crystal",
+  "item.sutetchi.slimechocolate": "Slime Chocolate",
   "item.sutetchi.raw_slime": "Raw Slime",
   "item.sutetchi.sea_slime": "Sea Slime",
   "item.sutetchi.nether_slime": "Nether Slime",
@@ -13,5 +14,11 @@
 
   "itemGroup.sutetchi.sutetchi": "Sutetchi",
 
-  "entity.sutetchi.slimelin": "Slimelin"
+  "entity.sutetchi.slimelin": "Slimelin",
+
+  "sutetchi.slimestep": "Slime Step",
+  "sutetchi.tamesound": "Tamed Slimelin",
+  "sutetchi.crunch": "Slimelin Eating",
+  "sutetchi.slimechange": "Slimelin Change",
+  "sutetchi.witchchange": "Witch Outfit Change"
 }
