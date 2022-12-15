@@ -21,7 +21,7 @@ Sutetchi is a very early wip Minecraft mod that revoles around Slimelins, a new 
 
 **Requires Minecraft Fabric 1.19.2 and GeckoLib 1.19.2**
 
-Sutetchi's Models/Textures/Animations are All Rights Reserved
-The code is free to use/public domain
+Sutetchi's Models/Textures/Animations are All Rights Reserved.
+The code is free to use/public domain.
 
     (c) 2022 MonsutaaFang
