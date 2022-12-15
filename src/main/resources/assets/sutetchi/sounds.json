@@ -28,5 +28,17 @@
     "sounds": [
       "sutetchi:crunch"
     ]
+  },
+  "upgrade": {
+    "subtitle": "sutetchi.upgrade",
+    "sounds": [
+      "sutetchi:upgrade"
+    ]
+  },
+  "snowchange": {
+    "subtitle": "sutetchi.snowchange",
+    "sounds": [
+      "sutetchi:snowchange"
+    ]
   }
 }

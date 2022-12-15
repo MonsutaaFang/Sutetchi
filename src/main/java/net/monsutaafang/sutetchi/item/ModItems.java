@@ -17,6 +17,12 @@ public class ModItems {
         public static final Item SLIMECHOCOLATE = registerItem("slimechocolate",
                 new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).maxCount(16)));
 
+        public static final Item SLIMESHARD = registerItem("slimeshard",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.UNCOMMON).maxCount(1)));
+
+        public static final Item SLIMEHEART = registerItem("slimeheart",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.RARE).maxCount(1)));
+
         public static final Item RAW_SLIME = registerItem("raw_slime",
                 new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).maxCount(1)));
 
@@ -42,6 +48,21 @@ public class ModItems {
                 new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
 
         public static final Item END_WITCHES_BREW = registerItem("end_witches_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
+        public static final Item SHARPSNOW = registerItem("sharpsnow",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.RARE).maxCount(1)));
+
+        public static final Item SNOW_BREW = registerItem("snow_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.RARE).maxCount(1)));
+
+        public static final Item SEA_SNOW_BREW = registerItem("sea_snow_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
+        public static final Item NETHER_SNOW_BREW = registerItem("nether_snow_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
+        public static final Item END_SNOW_BREW = registerItem("end_snow_brew",
                 new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
 
         public static final Item SLIMELIN_SPAWN_EGG = registerItem("slimelin_spawn_egg",

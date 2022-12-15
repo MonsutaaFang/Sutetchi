@@ -67,7 +67,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new SitGoal(this));
-        this.goalSelector.add(2, new PounceAtTargetGoal(this, 0.2F));
+        this.goalSelector.add(2, new PounceAtTargetGoal(this, 0.4F));
         this.goalSelector.add(3, new MeleeAttackGoal(this, 0.75f, true));
         this.goalSelector.add(4, new FollowOwnerGoal(this, 0.75f, 2.0F, 4.0F, false));
         this.goalSelector.add(5, new WanderAroundPointOfInterestGoal(this, 0.75f, false));
@@ -95,7 +95,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
             return PlayState.CONTINUE;
         }
 
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
         return PlayState.CONTINUE;
     }
 
@@ -119,8 +119,10 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         return this.songPlaying;
     }
 
-
     private static final TrackedData<Boolean> SITTING =
+            DataTracker.registerData(SlimelinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
+    private static final TrackedData<Boolean> UPGRADE =
             DataTracker.registerData(SlimelinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     @Override
@@ -130,6 +132,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
         Item itemForTaming = ModItems.TAME_CRYSTAL;
         Item itemForHeal = ModItems.SLIMECHOCOLATE;
+        Item itemForUpgrade = ModItems.SLIMEHEART;
         Item itemForRawslime = ModItems.RAW_SLIME;
         Item itemForSea = ModItems.SEA_SLIME;
         Item itemForNether = ModItems.NETHER_SLIME;
@@ -138,6 +141,10 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         Item itemForSeaWitch = ModItems.SEA_WITCHES_BREW;
         Item itemForNetherWitch = ModItems.NETHER_WITCHES_BREW;
         Item itemForEndWitch = ModItems.END_WITCHES_BREW;
+        Item itemForSnow = ModItems.SNOW_BREW;
+        Item itemForSeaSnow = ModItems.SEA_SNOW_BREW;
+        Item itemForNetherSnow = ModItems.NETHER_SNOW_BREW;
+        Item itemForEndSnow = ModItems.END_SNOW_BREW;
 
         if (item == itemForTaming && !isTamed()) {
             if (this.world.isClient()) {
@@ -158,6 +165,15 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
                 return ActionResult.SUCCESS;
             }
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForUpgrade && isOwner(player) && !isUpgraded()) {
+            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(40.0D);
+            this.playSound(ModSounds.UPGRADE, 1f, 1f);
+            this.heal(40);
+            itemstack.decrement(1);
+            setUpgrade(true);
+            return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForSea && isOwner(player)) {
@@ -209,6 +225,34 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
             return ActionResult.SUCCESS;
         }
 
+        if (isTamed() && !this.world.isClient() && item == itemForSeaSnow && isOwner(player)) {
+            this.setVariant(SlimelinVariant.SEASNOW);
+            this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForNetherSnow && isOwner(player)) {
+            this.setVariant(SlimelinVariant.NETHERSNOW);
+            this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForEndSnow && isOwner(player)) {
+            this.setVariant(SlimelinVariant.ENDSNOW);
+            this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForSnow && isOwner(player)) {
+            this.setVariant(SlimelinVariant.SNOW);
+            this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
         if (isTamed() && !this.world.isClient() && item == itemForRawslime && isOwner(player)) {
             this.setVariant(SlimelinVariant.DEFAULT);
             this.playSound(ModSounds.SLIMECHANGE, 1f, 1f);
@@ -217,7 +261,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForHeal && isOwner(player) && this.getHealth() < this.getMaxHealth()) {
-            this.heal(80);
+            this.heal(40);
             this.playSound(ModSounds.CRUNCH, 2.50f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
@@ -235,6 +279,13 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         return super.interactMob(player, hand);
     }
 
+    public void setUpgrade(boolean upgraded) {
+        this.dataTracker.set(UPGRADE, upgraded);
+    }
+    public boolean isUpgraded() {
+        return this.dataTracker.get(UPGRADE);
+    }
+
     public void setSit(boolean sitting) {
         this.dataTracker.set(SITTING, sitting);
         super.setSitting(sitting);
@@ -244,16 +295,13 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         return this.dataTracker.get(SITTING);
     }
 
-
     @Override
     public void setTamed(boolean tamed) {
         super.setTamed(tamed);
         if (tamed) {
-            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(20.0D);
             getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(6D);
             getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.47f);
         } else {
-            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(20.0D);
             getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(2D);
             getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue((double) 0.47f);
         }
@@ -281,6 +329,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("isSitting", this.dataTracker.get(SITTING));
         nbt.putInt("variant", this.dataTracker.get(DATA_ID_TYPE_VARIANT));
+        nbt.putBoolean("isUpgraded", this.dataTracker.get(UPGRADE));
     }
 
     @Override
@@ -288,6 +337,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         super.readCustomDataFromNbt(nbt);
         this.dataTracker.set(SITTING, nbt.getBoolean("isSitting"));
         this.dataTracker.set(DATA_ID_TYPE_VARIANT, nbt.getInt("variant"));
+        this.dataTracker.set(UPGRADE, nbt.getBoolean("isUpgraded"));
     }
 
     @Override
@@ -304,6 +354,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         super.initDataTracker();
         this.dataTracker.startTracking(SITTING, false);
         this.dataTracker.startTracking(DATA_ID_TYPE_VARIANT, 0);
+        this.dataTracker.startTracking(UPGRADE, false);
     }
 
     private static final TrackedData<Integer> DATA_ID_TYPE_VARIANT =

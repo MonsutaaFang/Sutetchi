@@ -13,11 +13,15 @@ import net.monsutaafang.sutetchi.item.ModItems;
 public class ModLootTableModifiers {
     private static final Identifier SIMPLE_DUNGEON_STRUCTURE_CHEST_ID
             = new Identifier("minecraft", "chests/simple_dungeon");
+
+    private static final Identifier ABANDONED_MINESHAFT_CHEST_ID
+            = new Identifier("minecraft", "chests/abandoned_mineshaft");
     private static final Identifier SHIPWRECK_TREASURE_CHEST_ID
             = new Identifier("minecraft", "chests/shipwreck_treasure");
+    private static final Identifier IGLOO_CHEST_ID
+            = new Identifier("minecraft", "chests/igloo_chest");
     private static final Identifier BASTION_BRIDGE_CHEST_ID
             = new Identifier("minecraft", "chests/bastion_bridge");
-
     private static final Identifier END_CITY_TREASURE_CHEST_ID
             = new Identifier("minecraft", "chests/end_city_treasure");
 
@@ -28,6 +32,33 @@ public class ModLootTableModifiers {
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.04f))
                         .with(ItemEntry.builder(ModItems.TANGO_MUSHROOM))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
+
+            if (SIMPLE_DUNGEON_STRUCTURE_CHEST_ID.equals(id)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.04f))
+                        .with(ItemEntry.builder(ModItems.SLIMESHARD))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
+
+            if (ABANDONED_MINESHAFT_CHEST_ID.equals(id)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.04f))
+                        .with(ItemEntry.builder(ModItems.SLIMESHARD))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
+
+            if (IGLOO_CHEST_ID.equals(id)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.04f))
+                        .with(ItemEntry.builder(ModItems.SHARPSNOW))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }

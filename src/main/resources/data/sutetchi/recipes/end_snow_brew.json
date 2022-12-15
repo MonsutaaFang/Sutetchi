@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "sutetchi:sharpsnow"
+    },
+    "T": {
+      "item": "sutetchi:end_slime"
+    }
+  },
+  "pattern": [
+    "   ",
+    " TG",
+    "   "
+  ],
+  "result": {
+    "item": "sutetchi:end_snow_brew"
+  }
+}

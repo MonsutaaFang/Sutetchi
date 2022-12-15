@@ -13,9 +13,13 @@ public class ModSounds {
     private static final Map<SoundEvent, Identifier> SOUND_EVENTS = new LinkedHashMap<>();
     public static final SoundEvent SLIMESTEP = create("slimestep");
     public static final SoundEvent TAMESOUND = create("tamesound");
+
+    public static final SoundEvent UPGRADE = create("upgrade");
     public static final SoundEvent CRUNCH = create("crunch");
     public static final SoundEvent SLIMECHANGE = create("slimechange");
     public static final SoundEvent WITCHCHANGE = create("witchchange");
+
+    public static final SoundEvent SNOWCHANGE = create("snowchange");
 
 
     private static SoundEvent create(String name) {

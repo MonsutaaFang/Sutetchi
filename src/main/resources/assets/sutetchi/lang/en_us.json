@@ -1,6 +1,8 @@
 {
   "item.sutetchi.tame_crystal": "Tame Crystal",
   "item.sutetchi.slimechocolate": "Slime Chocolate",
+  "item.sutetchi.slimeshard": "Slime Shard",
+  "item.sutetchi.slimeheart": "Slime Heart",
   "item.sutetchi.raw_slime": "Raw Slime",
   "item.sutetchi.sea_slime": "Sea Slime",
   "item.sutetchi.nether_slime": "Nether Slime",
@@ -10,6 +12,11 @@
   "item.sutetchi.sea_witches_brew": "Sea Witches Brew",
   "item.sutetchi.nether_witches_brew": "Nether Witches Brew",
   "item.sutetchi.end_witches_brew": "End Witches Brew",
+  "item.sutetchi.sharpsnow": "Sharp Snow",
+  "item.sutetchi.snow_brew": "Snow Brew",
+  "item.sutetchi.sea_snow_brew": "Sea Snow Brew",
+  "item.sutetchi.nether_snow_brew": "Nether Snow Brew",
+  "item.sutetchi.end_snow_brew": "End Snow Brew",
   "item.sutetchi.slimelin_spawn_egg": "Slimelin Spawn Egg",
 
   "itemGroup.sutetchi.sutetchi": "Sutetchi",
@@ -18,7 +25,9 @@
 
   "sutetchi.slimestep": "Slime Step",
   "sutetchi.tamesound": "Tamed Slimelin",
+  "sutetchi.upgrade": "Slimelin Health Upgrade",
   "sutetchi.crunch": "Slimelin Eating",
   "sutetchi.slimechange": "Slimelin Change",
-  "sutetchi.witchchange": "Witch Outfit Change"
+  "sutetchi.witchchange": "Witch Outfit Change",
+  "sutetchi.snowchange": "Snow Outfit Change"
 }
