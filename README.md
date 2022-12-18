@@ -19,11 +19,9 @@ Sutetchi is a very early wip Minecraft mod that revoles around Slimelins, a new 
 
 * You can apply outfits to your slimelin with items crafted from rare loot in dungeon chests.
 
-Full disclosure, this mod was made as a side project to help me learn Java and just for fun, as such, the mod's repo acts as a way to share the code with friends. If you stumble upon this mod feel free to download and try it yourself, but I would personally not reccomend using it in a mod pack or anything as there's
-bound to be bugs. You are, of course, free to do so, but I would advise against it.
-
 **Requires Minecraft Fabric 1.19.2 and GeckoLib 1.19.2**
 
-Sutetchi's code (aside from models/textures) is public domain under Creative Commons 0
+Sutetchi's Characters/Models/Textures/Animations are All Rights Reserved.
+The code however, is free to use/public domain.
 
     (c) 2022 MonsutaaFang
