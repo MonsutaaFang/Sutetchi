@@ -16,8 +16,11 @@ public enum SlimelinVariant {
     SNOW(8),
     SEASNOW(9),
     NETHERSNOW(10),
-    ENDSNOW(11);
-
+    ENDSNOW(11),
+    ANCIENT(12),
+    SEAANCIENT(13),
+    NETHERANCIENT(14),
+    ENDANCIENT(15);
     private static final SlimelinVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(SlimelinVariant::getId)).toArray(SlimelinVariant[]::new);
     private final int id;

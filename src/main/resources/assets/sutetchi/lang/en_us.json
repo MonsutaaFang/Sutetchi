@@ -17,6 +17,11 @@
   "item.sutetchi.sea_snow_brew": "Sea Snow Brew",
   "item.sutetchi.nether_snow_brew": "Nether Snow Brew",
   "item.sutetchi.end_snow_brew": "End Snow Brew",
+  "item.sutetchi.ancient_gem": "Ancient Gem",
+  "item.sutetchi.ancient_brew": "Ancient Brew",
+  "item.sutetchi.sea_ancient_brew": "Sea Ancient Brew",
+  "item.sutetchi.end_ancient_brew": "End Ancient Brew",
+  "item.sutetchi.nether_ancient_brew": "Nether Ancient Brew",
   "item.sutetchi.slimelin_spawn_egg": "Slimelin Spawn Egg",
 
   "itemGroup.sutetchi.sutetchi": "Sutetchi",
@@ -29,5 +34,6 @@
   "sutetchi.crunch": "Slimelin Eating",
   "sutetchi.slimechange": "Slimelin Change",
   "sutetchi.witchchange": "Witch Outfit Change",
-  "sutetchi.snowchange": "Snow Outfit Change"
+  "sutetchi.snowchange": "Snow Outfit Change",
+  "sutetchi.ancientchange": "Ancient Outfit Change"
 }

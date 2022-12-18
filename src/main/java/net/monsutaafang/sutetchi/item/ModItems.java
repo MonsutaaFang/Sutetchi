@@ -65,6 +65,21 @@ public class ModItems {
         public static final Item END_SNOW_BREW = registerItem("end_snow_brew",
                 new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
 
+        public static final Item ANCIENT_GEM = registerItem("ancient_gem",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.RARE).maxCount(1)));
+
+        public static final Item ANCIENT_BREW = registerItem("ancient_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.RARE).maxCount(1)));
+
+        public static final Item SEA_ANCIENT_BREW = registerItem("sea_ancient_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
+        public static final Item NETHER_ANCIENT_BREW = registerItem("nether_ancient_brew",
+            new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
+        public static final Item END_ANCIENT_BREW = registerItem("end_ancient_brew",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
         public static final Item SLIMELIN_SPAWN_EGG = registerItem("slimelin_spawn_egg",
                 new SpawnEggItem(ModEntities.SLIMELIN, 0x48fA56, 0x1ad447,
                         new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).maxCount(1)));

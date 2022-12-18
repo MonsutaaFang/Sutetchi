@@ -145,6 +145,10 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         Item itemForSeaSnow = ModItems.SEA_SNOW_BREW;
         Item itemForNetherSnow = ModItems.NETHER_SNOW_BREW;
         Item itemForEndSnow = ModItems.END_SNOW_BREW;
+        Item itemForAncient = ModItems.ANCIENT_BREW;
+        Item itemForSeaAncient = ModItems.SEA_ANCIENT_BREW;
+        Item itemForNetherAncient = ModItems.NETHER_ANCIENT_BREW;
+        Item itemForEndAncient = ModItems.END_ANCIENT_BREW;
 
         if (item == itemForTaming && !isTamed()) {
             if (this.world.isClient()) {
@@ -249,6 +253,34 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         if (isTamed() && !this.world.isClient() && item == itemForSnow && isOwner(player)) {
             this.setVariant(SlimelinVariant.SNOW);
             this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForSeaAncient && isOwner(player)) {
+            this.setVariant(SlimelinVariant.SEAANCIENT);
+            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForNetherAncient && isOwner(player)) {
+            this.setVariant(SlimelinVariant.NETHERANCIENT);
+            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForEndAncient && isOwner(player)) {
+            this.setVariant(SlimelinVariant.ENDANCIENT);
+            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForAncient && isOwner(player)) {
+            this.setVariant(SlimelinVariant.ANCIENT);
+            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }

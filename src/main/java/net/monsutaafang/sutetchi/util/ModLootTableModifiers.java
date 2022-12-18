@@ -24,6 +24,8 @@ public class ModLootTableModifiers {
             = new Identifier("minecraft", "chests/bastion_bridge");
     private static final Identifier END_CITY_TREASURE_CHEST_ID
             = new Identifier("minecraft", "chests/end_city_treasure");
+    private static final Identifier ANCIENT_CITY_CHEST_ID
+            = new Identifier("minecraft", "chests/ancient_city");
 
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
@@ -90,7 +92,14 @@ public class ModLootTableModifiers {
                 tableBuilder.pool(poolBuilder.build());
             }
 
-
+            if (ANCIENT_CITY_CHEST_ID.equals(id)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.04f))
+                        .with(ItemEntry.builder(ModItems.ANCIENT_GEM))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
         });
     }
 }

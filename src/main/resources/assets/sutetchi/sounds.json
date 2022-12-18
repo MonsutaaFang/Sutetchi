@@ -40,5 +40,11 @@
     "sounds": [
       "sutetchi:snowchange"
     ]
+  },
+  "ancientchange": {
+    "subtitle": "sutetchi.ancientchange",
+    "sounds": [
+      "sutetchi:ancientchange"
+    ]
   }
 }
