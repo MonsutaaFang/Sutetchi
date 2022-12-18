@@ -35,5 +35,10 @@
   "sutetchi.slimechange": "Slimelin Change",
   "sutetchi.witchchange": "Witch Outfit Change",
   "sutetchi.snowchange": "Snow Outfit Change",
-  "sutetchi.ancientchange": "Ancient Outfit Change"
+  "sutetchi.ancientchange": "Ancient Outfit Change",
+
+  "item.custom.appearance_change.tooltip": "Changes the appearance of your Slimelin",
+  "item.custom.health_up.tooltip": "Permanently increase the health of your Slimelin",
+  "item.custom.heals.tooltip": "Heals a tamed Slimelin",
+  "item.custom.tamed.tooltip": "Tames a Slimelin"
 }
