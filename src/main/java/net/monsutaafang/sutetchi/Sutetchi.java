@@ -1,6 +1,7 @@
 package net.monsutaafang.sutetchi;
 
 import net.fabricmc.api.ModInitializer;
+import net.monsutaafang.sutetchi.block.ModBlocks;
 import net.monsutaafang.sutetchi.item.ModItems;
 import net.monsutaafang.sutetchi.sound.ModSounds;
 import net.monsutaafang.sutetchi.util.ModLootTableModifiers;
@@ -18,6 +19,8 @@ public class Sutetchi implements ModInitializer {
 	public void onInitialize() {
 
 		ModItems.registerModItems();
+
+		ModBlocks.registerModBlocks();
 
 		ModRegistries.registerModStuffs();
 

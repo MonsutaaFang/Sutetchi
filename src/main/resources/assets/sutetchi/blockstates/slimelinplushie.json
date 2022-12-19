@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "sutetchi:block/slimelinplushie"
+    },
+    "facing=south": {
+      "model": "sutetchi:block/slimelinplushie",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sutetchi:block/slimelinplushie",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "sutetchi:block/slimelinplushie",
+      "y": 90
+    }
+  }
+}
