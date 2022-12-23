@@ -13,9 +13,9 @@ Sutetchi is a very early wip Minecraft mod that revoles around Slimelins, a new 
 
 * Slimelins will follow you once tamed, you can make them sit via right clicked on once tamed.
 
-* You can apply outfits to your slimelin with items crafted from rare loot in dungeon chests.
+* Apply outfits to your slimelin with items crafted from rare loot in dungeon chests.
 
-* A way to upgrade your Slimelin's base health via loot drops in chests.
+* Upgrade your Slimelin's base health via loot drops in chests.
 
 **Requires Minecraft Fabric 1.19.2 and GeckoLib 1.19.2**
 
