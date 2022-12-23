@@ -84,6 +84,21 @@ public class ModItems {
         public static final Item END_ANCIENT_BREW = registerItem("end_ancient_brew",
                 new appearance_change(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
 
+        public static final Item EXPLORERS_GLASSES = registerItem("explorers_glasses",
+                new Item(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.RARE).maxCount(1)));
+
+        public static final Item EXPLORERS_BREW = registerItem("explorers_brew",
+                new appearance_change(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.RARE).maxCount(1)));
+
+        public static final Item SEA_EXPLORERS_BREW = registerItem("sea_explorers_brew",
+                new appearance_change(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
+        public static final Item NETHER_EXPLORERS_BREW = registerItem("nether_explorers_brew",
+                new appearance_change(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
+        public static final Item END_EXPLORERS_BREW = registerItem("end_explorers_brew",
+                new appearance_change(new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).rarity(Rarity.EPIC).maxCount(1)));
+
         public static final Item SLIMELIN_SPAWN_EGG = registerItem("slimelin_spawn_egg",
                 new SpawnEggItem(ModEntities.SLIMELIN, 0x48fA56, 0x1ad447,
                         new FabricItemSettings().group(ModItemGroups.SUTETCHIGROUP).maxCount(1)));

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "sutetchi:explorers_glasses"
+    },
+    "T": {
+      "item": "sutetchi:end_slime"
+    }
+  },
+  "pattern": [
+    "   ",
+    " TG",
+    "   "
+  ],
+  "result": {
+    "item": "sutetchi:end_explorers_brew"
+  }
+}

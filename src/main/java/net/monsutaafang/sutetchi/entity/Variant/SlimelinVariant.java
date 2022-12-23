@@ -20,7 +20,11 @@ public enum SlimelinVariant {
     ANCIENT(12),
     SEAANCIENT(13),
     NETHERANCIENT(14),
-    ENDANCIENT(15);
+    ENDANCIENT(15),
+    EXPLORERS(16),
+    SEAEXPLORERS(17),
+    NETHEREXPLORERS(18),
+    ENDEXPLORERS(19);
     private static final SlimelinVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(SlimelinVariant::getId)).toArray(SlimelinVariant[]::new);
     private final int id;

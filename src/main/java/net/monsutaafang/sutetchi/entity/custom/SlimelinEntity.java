@@ -81,7 +81,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walknew", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
             return PlayState.CONTINUE;
         }
 
@@ -149,6 +149,10 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         Item itemForSeaAncient = ModItems.SEA_ANCIENT_BREW;
         Item itemForNetherAncient = ModItems.NETHER_ANCIENT_BREW;
         Item itemForEndAncient = ModItems.END_ANCIENT_BREW;
+        Item itemForExplorers = ModItems.EXPLORERS_BREW;
+        Item itemForSeaExplorers = ModItems.SEA_EXPLORERS_BREW;
+        Item itemForNetherExplorers = ModItems.NETHER_EXPLORERS_BREW;
+        Item itemForEndExplorers = ModItems.END_EXPLORERS_BREW;
 
         if (item == itemForTaming && !isTamed()) {
             if (this.world.isClient()) {
@@ -280,6 +284,34 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
         if (isTamed() && !this.world.isClient() && item == itemForAncient && isOwner(player)) {
             this.setVariant(SlimelinVariant.ANCIENT);
+            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForSeaExplorers && isOwner(player)) {
+            this.setVariant(SlimelinVariant.SEAEXPLORERS);
+            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForNetherExplorers && isOwner(player)) {
+            this.setVariant(SlimelinVariant.NETHEREXPLORERS);
+            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForEndExplorers && isOwner(player)) {
+            this.setVariant(SlimelinVariant.ENDEXPLORERS);
+            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            itemstack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+
+        if (isTamed() && !this.world.isClient() && item == itemForExplorers && isOwner(player)) {
+            this.setVariant(SlimelinVariant.EXPLORERS);
             this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
