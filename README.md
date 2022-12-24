@@ -3,19 +3,21 @@
 
 **The Official Repo for the Sutetchi Mod!**
 
-**What is Sutetchi?**
+What is Sutetchi?
 
-Sutetchi is a wip Minecraft mod that revolves around Slimelins, a new slime mob entity that can be tamed.
+Sutetchi is a Minecraft mod that revolves around Slimelins, a new slime mob that can be tamed.
 
-**Currently Available:**
+Information:
 
-* Tame Slimelins via a Tame Crystal which can be crafted. Slimelins spawn in the Swamp Biome.
+* Slimelins spawn in Swamp biomes.
 
-* Slimelins will follow you once tamed, you can make them sit via right clicked on once tamed.
+* Tame Slimelins with a Tame Crystal, you can craft one with four Lapis surrounding one Rose. Once tamed they will fight for you and can be commanded to sit by right clicking on.
 
-* Apply outfits to your slimelin with items crafted from rare loot in dungeon chests.
+* Decorate your Slimelin by applying various colors and outfits crafted with items found in loot chests.
 
-* Upgrade your Slimelin's base health via loot drops in chests.
+* Upgrade your Slimelins base health by finding slime shards in loot chests.
+
+This mod was made for use in my single player world, but figured id share it for the holidays. This mod is still a wip, I will continue development on it when I have spare time.
 
 **Requires Minecraft Fabric 1.19.2 and GeckoLib 1.19.2**
 
