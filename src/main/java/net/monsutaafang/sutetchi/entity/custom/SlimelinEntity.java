@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -21,6 +22,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -177,7 +180,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
         if (isTamed() && !this.world.isClient() && item == itemForUpgrade && isOwner(player) && !isUpgraded()) {
             getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(40.0D);
-            this.playSound(ModSounds.UPGRADE, 1f, 1f);
+            this.playSound(ModSounds.UPGRADE, 0.72f, 1f);
             this.heal(40);
             itemstack.decrement(1);
             setUpgrade(true);
@@ -235,28 +238,28 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
         if (isTamed() && !this.world.isClient() && item == itemForSeaSnow && isOwner(player)) {
             this.setVariant(SlimelinVariant.SEASNOW);
-            this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            this.playSound(ModSounds.SNOWCHANGE, 0.70f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForNetherSnow && isOwner(player)) {
             this.setVariant(SlimelinVariant.NETHERSNOW);
-            this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            this.playSound(ModSounds.SNOWCHANGE, 0.70f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForEndSnow && isOwner(player)) {
             this.setVariant(SlimelinVariant.ENDSNOW);
-            this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            this.playSound(ModSounds.SNOWCHANGE, 0.70f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForSnow && isOwner(player)) {
             this.setVariant(SlimelinVariant.SNOW);
-            this.playSound(ModSounds.SNOWCHANGE, 0.80f, 1f);
+            this.playSound(ModSounds.SNOWCHANGE, 0.70f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
@@ -291,28 +294,28 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
 
         if (isTamed() && !this.world.isClient() && item == itemForSeaExplorers && isOwner(player)) {
             this.setVariant(SlimelinVariant.SEAEXPLORERS);
-            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            this.playSound(ModSounds.EXPLORERSCHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForNetherExplorers && isOwner(player)) {
             this.setVariant(SlimelinVariant.NETHEREXPLORERS);
-            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            this.playSound(ModSounds.EXPLORERSCHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForEndExplorers && isOwner(player)) {
             this.setVariant(SlimelinVariant.ENDEXPLORERS);
-            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            this.playSound(ModSounds.EXPLORERSCHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
 
         if (isTamed() && !this.world.isClient() && item == itemForExplorers && isOwner(player)) {
             this.setVariant(SlimelinVariant.EXPLORERS);
-            this.playSound(ModSounds.ANCIENTCHANGE, 0.80f, 1f);
+            this.playSound(ModSounds.EXPLORERSCHANGE, 1f, 1f);
             itemstack.decrement(1);
             return ActionResult.SUCCESS;
         }
@@ -409,9 +412,7 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
         return super.getScoreboardTeam();
     }
 
-    public boolean canBeLeashedBy(PlayerEntity player) {
-        return false;
-    }
+    public boolean canBeLeashedBy(PlayerEntity player) {return false;}
 
     @Override
     protected void initDataTracker() {
@@ -438,5 +439,11 @@ public class SlimelinEntity extends TameableEntity implements IAnimatable {
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
         this.playSound(ModSounds.SLIMESTEP, 0.75f, 1.0f);
+    }
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return ModSounds.SLIMELINHURT;
+    }
+    protected SoundEvent getDeathSound() {
+        return ModSounds.SLIMELINDEATH;
     }
 }

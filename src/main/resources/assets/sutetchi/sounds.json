@@ -5,6 +5,18 @@
       "sutetchi:slimestep"
     ]
   },
+  "slimelinhurt": {
+    "subtitle": "sutetchi.slimelinhurt",
+    "sounds": [
+      "sutetchi:slimelinhurt"
+    ]
+  },
+  "slimelindeath": {
+    "subtitle": "sutetchi.slimelindeath",
+    "sounds": [
+      "sutetchi:slimelindeath"
+    ]
+  },
   "witchchange": {
     "subtitle": "sutetchi.witchchange",
     "sounds": [
@@ -45,6 +57,12 @@
     "subtitle": "sutetchi.ancientchange",
     "sounds": [
       "sutetchi:ancientchange"
+    ]
+  },
+  "explorerschange": {
+    "subtitle": "sutetchi.explorerschange",
+    "sounds": [
+      "sutetchi:explorerschange"
     ]
   }
 }

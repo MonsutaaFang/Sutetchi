@@ -36,6 +36,8 @@
   "entity.sutetchi.slimelin": "Slimelin",
 
   "sutetchi.slimestep": "Slime Step",
+  "sutetchi.slimelinhurt": "Slimelin Hurt",
+  "sutetchi.slimelindeath": "Slimelin Death",
   "sutetchi.tamesound": "Tamed Slimelin",
   "sutetchi.upgrade": "Slimelin Health Upgrade",
   "sutetchi.crunch": "Slimelin Eating",
@@ -43,9 +45,10 @@
   "sutetchi.witchchange": "Witch Outfit Change",
   "sutetchi.snowchange": "Snow Outfit Change",
   "sutetchi.ancientchange": "Ancient Outfit Change",
+  "sutetchi.explorerschange": "Explorers Outfit Change",
 
   "item.custom.appearance_change.tooltip": "Changes the appearance of your Slimelin",
-  "item.custom.health_up.tooltip": "Permanently increase the health of your Slimelin",
+  "item.custom.health_up.tooltip": "Permanently increases the health of your Slimelin",
   "item.custom.heals.tooltip": "Heals a tamed Slimelin",
   "item.custom.tamed.tooltip": "Tames a Slimelin"
 }
