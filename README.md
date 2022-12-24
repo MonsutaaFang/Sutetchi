@@ -11,7 +11,7 @@ Information:
 
 * Slimelins spawn in Swamp biomes.
 
-* Tame Slimelins with a Tame Crystal, you can craft one with four Lapis surrounding one Rose. Once tamed they will fight for you and can be commanded to sit by right clicking on.
+* Tame Slimelins with a Tame Crystal, you can craft one with four Lapis surrounding one Poppy Flower. Once tamed they will fight for you and can be commanded to sit by right clicking on.
 
 * Decorate your Slimelin by applying various colors and outfits crafted with items found in loot chests.
 
