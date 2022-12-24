@@ -5,7 +5,7 @@
 
 **What is Sutetchi?**
 
-Sutetchi is a very early wip Minecraft mod that revoles around Slimelins, a new slime mob entity that can be tamed.
+Sutetchi is a wip Minecraft mod that revolves around Slimelins, a new slime mob entity that can be tamed.
 
 **Currently Available:**
 
