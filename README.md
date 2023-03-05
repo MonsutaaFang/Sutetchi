@@ -24,4 +24,4 @@ This mod was made for use in my single player world, but figured id share it for
 Sutetchi's Characters/Models/Textures/Animations are All Rights Reserved.
 The code however, is free to use/public domain.
 
-    (c) 2022 MonsutaaFang
+    (c) 2023 MonsutaaFang
